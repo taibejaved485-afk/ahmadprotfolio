@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight, PlayCircle, Sparkles } from 'lucide-react';
 
@@ -35,11 +34,16 @@ const Hero: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 animate-in fade-in slide-in-from-bottom duration-1000 delay-500">
             <a 
               href="#contact" 
-              className="group relative flex items-center gap-3 px-10 py-5 bg-purple-600 rounded-2xl font-bold text-lg hover:bg-purple-700 transition-all shadow-2xl shadow-purple-600/40 hover:-translate-y-1 active:scale-95 overflow-hidden"
+              className="group relative flex items-center gap-3 px-10 py-5 bg-purple-600 rounded-2xl font-bold text-lg hover:bg-purple-700 transition-all shadow-2xl shadow-purple-600/40 hover:shadow-[0_0_40px_rgba(147,51,234,0.6)] hover:-translate-y-1 active:scale-95 overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-              Hire Me
-              <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
+              {/* Dynamic Gradient Sweep */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-sweep pointer-events-none"></div>
+              
+              {/* Pulsing Overlay */}
+              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 group-hover:animate-pulse-glow pointer-events-none"></div>
+              
+              <span className="relative z-10">Hire Me</span>
+              <ArrowRight size={22} className="relative z-10 group-hover:translate-x-1 transition-transform" />
             </a>
             <a 
               href="#portfolio" 
@@ -101,6 +105,21 @@ const Hero: React.FC = () => {
       </div>
 
       <style>{`
+        @keyframes sweep {
+          0% { transform: translateX(-100%); }
+          50% { transform: translateX(100%); }
+          100% { transform: translateX(100%); }
+        }
+        @keyframes pulse-glow {
+          0%, 100% { opacity: 0.1; }
+          50% { opacity: 0.4; }
+        }
+        .group-hover\\:animate-sweep {
+          animation: sweep 1.5s ease-in-out infinite;
+        }
+        .group-hover\\:animate-pulse-glow {
+          animation: pulse-glow 2s ease-in-out infinite;
+        }
         @keyframes bounce-slow {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-12px); }

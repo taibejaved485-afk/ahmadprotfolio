@@ -8,6 +8,7 @@ import Services from './components/Services.tsx';
 import Portfolio from './components/Portfolio.tsx';
 import Contact from './components/Contact.tsx';
 import Footer from './components/Footer.tsx';
+import WhatsAppButton from './components/WhatsAppButton.tsx';
 
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -61,6 +62,7 @@ const App: React.FC = () => {
       </main>
 
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };
