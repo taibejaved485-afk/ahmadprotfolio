@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Play, ExternalLink } from 'lucide-react';
 import { PROJECTS } from '../constants.tsx';
@@ -33,23 +32,27 @@ const Portfolio: React.FC = () => {
 
         <div className="grid md:grid-cols-2 gap-8">
           {filteredProjects.map((project, idx) => (
-            <div key={project.id} className={`group relative glass rounded-3xl overflow-hidden aspect-video shadow-2xl reveal stagger-${(idx % 2) + 1} hover:shadow-purple-500/10 transition-shadow duration-500`}>
+            <div 
+              key={project.id} 
+              className={`group relative glass rounded-[2.5rem] overflow-hidden aspect-video shadow-2xl reveal stagger-${(idx % 2) + 1} transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-purple-500/25 hover:bg-white/5 border border-transparent hover:border-purple-500/30`}
+            >
               <img 
                 src={project.thumbnail} 
                 alt={project.title} 
-                className="w-full h-full object-cover group-hover:scale-105 transition-all duration-[1.2s] ease-in-out opacity-70 group-hover:opacity-100"
+                className="w-full h-full object-cover group-hover:scale-110 transition-all duration-[1.2s] ease-in-out opacity-70 group-hover:opacity-100"
               />
+              {/* Overlay with subtle blur change on hover */}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-700"></div>
               
               <div className="absolute inset-0 flex flex-col justify-end p-8 translate-y-4 group-hover:translate-y-0 opacity-80 group-hover:opacity-100 transition-all duration-500">
                 <span className="text-purple-400 text-sm font-bold mb-2 transform group-hover:translate-x-1 transition-transform">{project.category}</span>
-                <h4 className="text-2xl font-bold text-white mb-6">{project.title}</h4>
+                <h4 className="text-2xl font-bold text-white mb-6 group-hover:text-purple-100 transition-colors">{project.title}</h4>
                 
                 <div className="flex gap-4">
-                  <button className="flex items-center gap-2 px-6 py-3 bg-white text-slate-950 rounded-xl font-bold hover:bg-purple-400 hover:text-white transition-all transform hover:-translate-y-1">
+                  <button className="flex items-center gap-2 px-6 py-3 bg-white text-slate-950 rounded-xl font-bold hover:bg-purple-500 hover:text-white transition-all transform hover:-translate-y-1 active:scale-95">
                     <Play size={18} fill="currentColor" /> Watch
                   </button>
-                  <button className="p-3 glass rounded-xl hover:bg-white/10 transition-all transform hover:-translate-y-1">
+                  <button className="p-3 glass rounded-xl hover:bg-white/10 transition-all transform hover:-translate-y-1 active:scale-95">
                     <ExternalLink size={20} />
                   </button>
                 </div>

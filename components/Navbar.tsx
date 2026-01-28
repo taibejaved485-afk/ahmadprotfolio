@@ -8,6 +8,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const whatsappUrl = "https://wa.me/923051014508?text=Hi Amir, I'm interested in hiring you for a video editing project!";
 
   const navLinks = [
     { name: 'About', href: '#about' },
@@ -39,7 +40,9 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
             </a>
           ))}
           <a 
-            href="#contact" 
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-6 py-2 bg-purple-600 text-white rounded-full text-sm font-semibold hover:bg-purple-700 transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-purple-500/20"
           >
             Hire Me
@@ -66,7 +69,9 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
             </a>
           ))}
           <a 
-            href="#contact" 
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="block text-center py-4 bg-purple-600 rounded-xl text-lg font-bold"
             onClick={() => setIsOpen(false)}
           >

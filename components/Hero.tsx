@@ -1,9 +1,10 @@
+
 import React from 'react';
 import { ArrowRight, PlayCircle, Sparkles } from 'lucide-react';
 
 const Hero: React.FC = () => {
-  // Updated with the new permanent Pinterest image link
   const imageUrl = "https://i.pinimg.com/736x/96/4d/36/964d3602afbd96c076f212275c2b5e00.jpg";
+  const whatsappUrl = "https://wa.me/923051014508?text=Hi Amir, I'm interested in hiring you for a video editing project!";
 
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 px-6 overflow-hidden">
@@ -33,7 +34,9 @@ const Hero: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 animate-in fade-in slide-in-from-bottom duration-1000 delay-500">
             <a 
-              href="#contact" 
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative flex items-center gap-3 px-10 py-5 bg-purple-600 rounded-2xl font-bold text-lg hover:bg-purple-700 transition-all shadow-2xl shadow-purple-600/40 hover:shadow-[0_0_40px_rgba(147,51,234,0.6)] hover:-translate-y-1 active:scale-95 overflow-hidden"
             >
               {/* Dynamic Gradient Sweep */}
@@ -57,30 +60,23 @@ const Hero: React.FC = () => {
 
         {/* Right Content: The Portrait Frame */}
         <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end reveal-right active">
-          {/* Main Glowing Backdrop to make the photo pop */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-purple-500/20 blur-[120px] rounded-full"></div>
           
           <div className="relative w-full max-w-[420px] aspect-[4/5] animate-float">
-            {/* Dynamic Background Accents */}
             <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-transparent rounded-[3rem] -rotate-6 scale-105 border border-white/5"></div>
             
-            {/* The Image Container with High-End Glass Frame */}
             <div className="relative h-full w-full rounded-[3rem] overflow-hidden glass p-3 border-t border-white/20 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)]">
               <img 
                 src={imageUrl} 
                 alt="Amir Raza - Video Editor" 
                 className="w-full h-full object-cover rounded-[2.5rem] brightness-110 contrast-[1.05]"
                 onError={(e) => {
-                    // High-quality placeholder if the provided link fails
                     (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=800&auto=format&fit=crop";
                 }}
               />
-              
-              {/* Bottom Blend Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
             </div>
 
-            {/* Expertise Badge Floating */}
             <div className="absolute -bottom-6 -left-6 p-6 glass rounded-3xl border-l-4 border-purple-500 shadow-2xl animate-bounce-slow">
               <div className="flex flex-col">
                 <span className="text-xs uppercase tracking-[0.2em] text-slate-400 font-black mb-1">Editor Pro</span>
@@ -88,7 +84,6 @@ const Hero: React.FC = () => {
               </div>
             </div>
             
-            {/* Play Decorator */}
             <div className="absolute -top-4 -right-4 p-4 glass rounded-full border border-white/10 shadow-xl hidden sm:flex items-center justify-center">
                <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(147,51,234,0.4)]">
                  <PlayCircle size={24} className="text-white" fill="white" />
@@ -98,7 +93,6 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      {/* Cinematic scroll indicator */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-20">
         <span className="text-[9px] uppercase tracking-[0.4em] font-black">Scroll to Reels</span>
         <div className="w-px h-12 bg-gradient-to-b from-purple-500 to-transparent"></div>

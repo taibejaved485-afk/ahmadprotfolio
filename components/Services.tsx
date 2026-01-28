@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Youtube, Film, Scissors, Layers, Sparkles, Play, X, CheckCircle2 } from 'lucide-react';
 import { SERVICES } from '../constants.tsx';
@@ -13,6 +14,7 @@ const IconMap: Record<string, React.ElementType> = {
 
 const Services: React.FC = () => {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
+  const whatsappUrl = "https://wa.me/923051014508?text=Hi Amir, I'm interested in booking your services!";
 
   // Prevent scrolling when modal is open
   useEffect(() => {
@@ -100,7 +102,9 @@ const Services: React.FC = () => {
 
             <div className="flex gap-4">
               <a 
-                href="#contact" 
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={closeModal}
                 className="flex-1 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl text-center transition-all shadow-xl shadow-purple-600/20 active:scale-95"
               >
