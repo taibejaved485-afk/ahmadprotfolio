@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Youtube, Film, Scissors, Layers, Sparkles, Play, X, CheckCircle2 } from 'lucide-react';
 import { SERVICES } from '../constants.tsx';
@@ -28,8 +27,12 @@ const Services: React.FC = () => {
   const closeModal = () => setSelectedService(null);
 
   return (
-    <section id="services" className="py-24 px-6 relative">
-      <div className="max-w-7xl mx-auto">
+    <section id="services" className="py-24 px-6 relative overflow-hidden">
+      {/* Parallax Floating Blob */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-600/5 rounded-full blur-[150px] pointer-events-none parallax-fast"></div>
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-600/5 rounded-full blur-[120px] pointer-events-none parallax-slow"></div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 reveal">
           <div className="space-y-4">
             <h2 className="text-purple-400 font-bold uppercase tracking-widest text-sm">What I Offer</h2>
@@ -45,16 +48,18 @@ const Services: React.FC = () => {
               <div 
                 key={index} 
                 onClick={() => setSelectedService(service)}
-                className={`group p-10 glass rounded-3xl transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/20 hover:bg-white/5 border-b-2 border-transparent hover:border-purple-500/50 reveal stagger-${index + 1} cursor-pointer`}
+                className={`group p-10 glass rounded-3xl transition-all duration-700 hover:-translate-y-4 hover:scale-[1.03] hover:shadow-2xl hover:shadow-purple-500/30 hover:bg-white/10 border-b-2 border-transparent hover:border-purple-500/50 reveal stagger-${(index % 3) + 1} cursor-pointer`}
               >
-                <div className="w-16 h-16 bg-purple-500/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                  <IconComponent className="text-purple-400" size={32} />
+                <div className="w-16 h-16 bg-purple-500/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-125 group-hover:bg-purple-600/20 transition-all duration-500">
+                  <IconComponent className="text-purple-400 group-hover:text-purple-300" size={32} />
                 </div>
-                <h4 className="text-2xl font-bold mb-4 text-white">{service.title}</h4>
-                <p className="text-slate-400 leading-relaxed mb-8">{service.description}</p>
-                <button className="flex items-center gap-2 text-purple-400 font-bold group-hover:gap-4 transition-all">
-                  View Details <Play size={14} fill="currentColor" />
-                </button>
+                <h4 className="text-2xl font-bold mb-4 text-white font-display">{service.title}</h4>
+                <p className="text-slate-400 leading-relaxed mb-8 group-hover:text-slate-300 transition-colors">{service.description}</p>
+                <div className="flex items-center gap-2 text-purple-400 font-bold group-hover:gap-4 transition-all">
+                  <span>Explore Details</span> 
+                  <div className="w-6 h-px bg-purple-400 group-hover:w-10 transition-all"></div>
+                  <Play size={12} fill="currentColor" />
+                </div>
               </div>
             );
           })}
@@ -63,58 +68,58 @@ const Services: React.FC = () => {
 
       {/* Modal Overlay */}
       {selectedService && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 sm:p-10 animate-in fade-in duration-300">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 sm:p-10 animate-in fade-in duration-500">
           <div 
-            className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm cursor-pointer" 
+            className="absolute inset-0 bg-slate-950/90 backdrop-blur-md cursor-pointer" 
             onClick={closeModal}
           ></div>
           
-          <div className="relative w-full max-w-2xl glass p-8 sm:p-12 rounded-[2.5rem] shadow-2xl border-t border-white/10 animate-in zoom-in-95 duration-300">
+          <div className="relative w-full max-w-2xl glass p-8 sm:p-12 rounded-[2.5rem] shadow-2xl border-t border-white/20 animate-in zoom-in-95 duration-500">
             <button 
               onClick={closeModal}
-              className="absolute top-6 right-6 p-2 hover:bg-white/5 rounded-full text-slate-400 hover:text-white transition-colors"
+              className="absolute top-8 right-8 p-3 hover:bg-white/10 rounded-full text-slate-400 hover:text-white transition-all transform hover:rotate-90"
             >
-              <X size={24} />
+              <X size={28} />
             </button>
 
-            <div className="flex items-center gap-6 mb-8">
-              <div className="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-600/30">
-                {React.createElement(IconMap[selectedService.icon], { size: 32, className: "text-white" })}
+            <div className="flex items-center gap-8 mb-10">
+              <div className="w-20 h-20 bg-purple-600 rounded-2xl flex items-center justify-center shadow-2xl shadow-purple-600/40 transform -rotate-3 group">
+                {React.createElement(IconMap[selectedService.icon], { size: 40, className: "text-white" })}
               </div>
-              <h4 className="text-3xl font-bold text-white font-display tracking-tight">{selectedService.title}</h4>
+              <h4 className="text-4xl font-bold text-white font-display tracking-tight leading-tight">{selectedService.title}</h4>
             </div>
 
-            <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+            <p className="text-xl text-slate-300 mb-10 leading-relaxed font-light">
               {selectedService.description}
             </p>
 
-            <div className="space-y-4 mb-10">
-              <h5 className="text-xs font-black uppercase tracking-[0.2em] text-purple-400">What's Included:</h5>
+            <div className="space-y-6 mb-12">
+              <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-purple-400">Standard deliverables:</h5>
               <ul className="grid sm:grid-cols-1 gap-4">
                 {selectedService.details.map((detail, idx) => (
-                  <li key={idx} className="flex items-start gap-4 text-slate-400">
-                    <CheckCircle2 size={20} className="text-purple-500 mt-1 shrink-0" />
-                    <span>{detail}</span>
+                  <li key={idx} className="flex items-start gap-4 text-slate-400 group">
+                    <CheckCircle2 size={20} className="text-purple-500 mt-1 shrink-0 transition-transform group-hover:scale-110" />
+                    <span className="group-hover:text-slate-200 transition-colors">{detail}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-6">
               <a 
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeModal}
-                className="flex-1 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl text-center transition-all shadow-xl shadow-purple-600/20 active:scale-95"
+                className="flex-1 py-5 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-2xl text-center transition-all shadow-2xl shadow-purple-600/40 active:scale-95 text-lg"
               >
-                Book This Service
+                Secure Your Spot
               </a>
               <button 
                 onClick={closeModal}
-                className="px-8 py-4 glass hover:bg-white/5 text-white font-bold rounded-xl transition-all"
+                className="px-10 py-5 glass hover:bg-white/10 text-white font-bold rounded-2xl transition-all text-lg"
               >
-                Close
+                Go Back
               </button>
             </div>
           </div>

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar.tsx';
 import Hero from './components/Hero.tsx';
@@ -15,7 +14,9 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const scrollPos = window.scrollY;
+      setScrolled(scrollPos > 50);
+      document.documentElement.style.setProperty('--scroll-y', `${scrollPos}`);
     };
     
     // Intersection Observer for Scroll Reveals
@@ -35,7 +36,7 @@ const App: React.FC = () => {
     const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
     revealElements.forEach((el) => observer.observe(el));
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
       revealElements.forEach((el) => observer.unobserve(el));

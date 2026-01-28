@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const About: React.FC = () => {
@@ -7,13 +6,20 @@ const About: React.FC = () => {
 
   return (
     <section id="about" className="py-24 px-6 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      {/* Parallax Background Text */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none z-0 opacity-[0.03] parallax-slow">
+        <span className="text-[20rem] font-black uppercase tracking-tighter leading-none block whitespace-nowrap">
+          CREATIVE
+        </span>
+      </div>
+
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
         <div className="relative reveal-left">
-          <div className="aspect-[4/5] rounded-[2.5rem] overflow-hidden glass shadow-2xl border border-white/10 group">
+          <div className="aspect-[4/5] rounded-[2.5rem] overflow-hidden glass shadow-2xl border border-white/10 group relative">
             <img 
               src={imageUrl} 
               alt="Amir Raza - Professional Video Editor" 
-              className="w-full h-full object-cover opacity-90 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
+              className="w-full h-full object-cover opacity-90 transition-all duration-[1.5s] cubic-bezier(0.22, 1, 0.36, 1) group-hover:scale-110 group-hover:opacity-100"
               onError={(e) => {
                 (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop";
               }}
@@ -22,13 +28,13 @@ const About: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none"></div>
           </div>
           
-          {/* Stats Badges */}
-          <div className="absolute -bottom-6 -right-6 p-8 glass rounded-3xl shadow-2xl border-l-4 border-purple-500 animate-float" style={{ animationDelay: '1s' }}>
+          {/* Stats Badges with unique parallax offsets */}
+          <div className="absolute -bottom-6 -right-6 p-8 glass rounded-3xl shadow-2xl border-l-4 border-purple-500 animate-float parallax-fast" style={{ animationDelay: '1s' }}>
             <h4 className="text-3xl font-black text-white mb-1 tracking-tighter">5+</h4>
             <p className="text-slate-400 text-[10px] uppercase font-black tracking-widest">Years Experience</p>
           </div>
           
-          <div className="absolute -top-6 -left-6 p-8 glass rounded-3xl shadow-2xl border-r-4 border-indigo-500 animate-float">
+          <div className="absolute -top-6 -left-6 p-8 glass rounded-3xl shadow-2xl border-r-4 border-indigo-500 animate-float parallax-slow">
             <h4 className="text-3xl font-black text-white mb-1 tracking-tighter">500+</h4>
             <p className="text-slate-400 text-[10px] uppercase font-black tracking-widest">Projects Done</p>
           </div>
@@ -52,11 +58,11 @@ const About: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-2 gap-6 pt-4">
-            <div className="p-6 glass rounded-2xl border-t border-white/5 group hover:border-purple-500/30 transition-colors">
+            <div className="p-6 glass rounded-2xl border-t border-white/5 group hover:border-purple-500/30 transition-all hover:bg-white/5">
               <h5 className="font-bold text-white mb-2 text-sm uppercase tracking-wider">My Arsenal</h5>
               <p className="text-xs text-slate-400 leading-relaxed">Premiere Pro, After Effects, DaVinci Resolve, Audition</p>
             </div>
-            <div className="p-6 glass rounded-2xl border-t border-white/5 group hover:border-indigo-500/30 transition-colors">
+            <div className="p-6 glass rounded-2xl border-t border-white/5 group hover:border-indigo-500/30 transition-all hover:bg-white/5">
               <h5 className="font-bold text-white mb-2 text-sm uppercase tracking-wider">Location</h5>
               <p className="text-xs text-slate-400 leading-relaxed">Iqra City, Sadiq Abad, Punjab, Pakistan</p>
             </div>
