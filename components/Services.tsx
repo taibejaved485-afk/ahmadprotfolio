@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Youtube, Film, Scissors, Layers, Sparkles, Play, X, CheckCircle2 } from 'lucide-react';
 import { SERVICES } from '../constants.tsx';
@@ -44,7 +43,7 @@ const Services: React.FC = () => {
               <div 
                 key={index} 
                 onClick={() => setSelectedService(service)}
-                className={`group p-10 glass rounded-3xl transition-all duration-500 hover:-translate-y-2 hover:bg-white/5 border-b-2 border-transparent hover:border-purple-500/50 reveal stagger-${index + 1} cursor-pointer`}
+                className={`group p-10 glass rounded-3xl transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/20 hover:bg-white/5 border-b-2 border-transparent hover:border-purple-500/50 reveal stagger-${index + 1} cursor-pointer`}
               >
                 <div className="w-16 h-16 bg-purple-500/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                   <IconComponent className="text-purple-400" size={32} />
