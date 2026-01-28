@@ -50,12 +50,14 @@ const Skills: React.FC = () => {
                   className={`h-full bg-gradient-to-r from-purple-600 via-indigo-500 to-purple-400 rounded-full transition-all duration-[1.5s] ease-out group-hover:animate-refill relative`}
                   style={{ 
                     width: isVisible ? `${skill.level}%` : '0%',
-                    // Passing the skill level as a CSS variable for the keyframe animation
                     '--skill-width': `${skill.level}%`
                   } as React.CSSProperties}
                 >
-                  {/* Glossy overlay on the bar */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent"></div>
+                  {/* Glossy top highlight for depth */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent"></div>
+                  
+                  {/* Cinematic Subtle Shimmer Effect on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[150%] group-hover:animate-shimmer pointer-events-none skew-x-[-20deg]"></div>
                 </div>
               </div>
             </div>
@@ -77,16 +79,27 @@ const Skills: React.FC = () => {
             width: 0%; 
             filter: brightness(1);
           }
-          50% {
-            filter: brightness(1.5);
+          40% {
+            filter: brightness(1.6);
           }
           100% { 
             width: var(--skill-width); 
             filter: brightness(1);
           }
         }
+        
+        @keyframes shimmer {
+          0% { transform: translateX(-150%) skewX(-20deg); }
+          100% { transform: translateX(350%) skewX(-20deg); }
+        }
+
         .group-hover\\:animate-refill {
-          animation: refill 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+          animation: refill 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .group-hover\\:animate-shimmer {
+          animation: shimmer 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+          animation-delay: 0.1s;
         }
       `}</style>
     </section>
