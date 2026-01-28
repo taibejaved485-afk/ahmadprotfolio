@@ -122,6 +122,18 @@
       .stagger-5 { transition-delay: 500ms; }
       .stagger-6 { transition-delay: 600ms; }
 
+      /* Border Shimmer */
+      @keyframes border-shimmer {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      .shimmer-border {
+        background: linear-gradient(90deg, #4c1d95, #9333ea, #4c1d95);
+        background-size: 200% auto;
+        animation: border-shimmer 3s linear infinite;
+      }
+
       /* Custom scrollbar */
       ::-webkit-scrollbar {
         width: 8px;
