@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { Youtube, Film, Scissors, Layers, Sparkles, Play, X, CheckCircle2 } from 'lucide-react';
-import { SERVICES } from '../constants';
-import { Service } from '../types';
+import { SERVICES } from '../constants.tsx';
+import { Service } from '../types.ts';
 
 const IconMap: Record<string, React.ElementType> = {
   Youtube,

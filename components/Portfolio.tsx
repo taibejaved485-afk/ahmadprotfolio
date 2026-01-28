@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Play, ExternalLink } from 'lucide-react';
-import { PROJECTS } from '../constants';
+import { PROJECTS } from '../constants.tsx';
 
 const Portfolio: React.FC = () => {
   const [filter, setFilter] = useState('All');

@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
-import { SKILLS } from '../constants';
+import { SKILLS } from '../constants.tsx';
 
 const Skills: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
