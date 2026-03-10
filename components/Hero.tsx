@@ -37,10 +37,10 @@ const Hero: React.FC = () => {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative flex items-center gap-3 px-10 py-5 bg-purple-600 rounded-2xl font-bold text-lg hover:bg-purple-700 transition-all shadow-2xl shadow-purple-600/40 hover:shadow-[0_0_40px_rgba(147,51,234,0.6)] hover:-translate-y-1 active:scale-95 overflow-hidden"
+              className="group relative flex items-center gap-3 px-10 py-5 bg-purple-600 rounded-2xl font-bold text-lg hover:bg-purple-700 transition-all shadow-2xl shadow-purple-600/40 hover:shadow-[0_0_40px_rgba(147,51,234,0.6)] hover:-translate-y-1 active:scale-95 overflow-hidden animate-pulse-subtle"
             >
               {/* Dynamic Gradient Sweep */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-sweep pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-sweep pointer-events-none"></div>
               
               {/* Pulsing Overlay */}
               <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 group-hover:animate-pulse-glow pointer-events-none"></div>
@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
             </a>
             <a 
               href="#portfolio" 
-              className="group flex items-center gap-3 px-10 py-5 glass rounded-2xl font-bold text-lg hover:bg-white/10 transition-all hover:-translate-y-1 active:scale-95"
+              className="group flex items-center gap-3 px-10 py-5 glass rounded-2xl font-bold text-lg hover:bg-white/10 transition-all hover:scale-105 active:scale-95 shadow-xl hover:shadow-purple-500/10"
             >
               <PlayCircle size={24} className="text-purple-400 group-hover:scale-110 transition-transform" />
               View Portfolio
@@ -107,6 +107,13 @@ const Hero: React.FC = () => {
         @keyframes pulse-glow {
           0%, 100% { opacity: 0.1; }
           50% { opacity: 0.4; }
+        }
+        @keyframes pulse-subtle {
+          0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(147, 51, 234, 0.4); }
+          50% { transform: scale(1.02); box-shadow: 0 0 20px 10px rgba(147, 51, 234, 0); }
+        }
+        .animate-pulse-subtle {
+          animation: pulse-subtle 3s ease-in-out infinite;
         }
         .group-hover\\:animate-sweep {
           animation: sweep 1.5s ease-in-out infinite;

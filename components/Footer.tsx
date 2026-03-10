@@ -58,39 +58,43 @@ const Footer: React.FC = () => {
       {/* Main Footer Layout */}
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Large Background Watermark */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none z-0 opacity-[0.03] parallax-slow">
-          <span className="text-[12vw] font-black uppercase tracking-tighter leading-none block whitespace-nowrap">
-            PREMIUM EDITOR
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none z-0 opacity-[0.02] parallax-slow">
+          <span className="text-[15vw] font-black uppercase tracking-tighter leading-none block whitespace-nowrap">
+            AMIR RAZA
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-8 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-12 mb-24">
           
           {/* Brand & Social Column */}
           <div className="space-y-10 reveal">
-            <div className="space-y-4">
-              <a href="#" className="flex items-center gap-2 text-3xl font-bold font-display tracking-wider group">
-                <div className="bg-purple-600 p-1 rounded-sm group-hover:rotate-12 transition-transform">
+            <div className="space-y-6">
+              <a href="#" className="flex items-center gap-3 text-3xl font-bold font-display tracking-wider group">
+                <div className="bg-purple-600 p-1.5 rounded-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 shadow-lg shadow-purple-600/40">
                   <Play size={24} fill="white" className="text-white" />
                 </div>
-                <span>AMIR <span className="text-purple-400">RAZA</span></span>
+                <span className="tracking-tighter">AMIR <span className="text-purple-400">RAZA</span></span>
               </a>
               <p className="text-slate-400 leading-relaxed text-lg font-light">
-                Premium video post-production that grabs attention and never lets go. Based in Pakistan, serving the world.
+                Crafting cinematic experiences that resonate. Based in Pakistan, delivering world-class video post-production to global clients.
               </p>
             </div>
             
             <div className="flex flex-wrap gap-4">
-              {socialLinks.map((social, i) => (
+              {[
+                { icon: Youtube, href: '#', color: 'hover:bg-[#FF0000]', shadow: 'hover:shadow-[#FF0000]/40' },
+                { icon: Instagram, href: '#', color: 'hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888]', shadow: 'hover:shadow-pink-600/40' },
+                { icon: Twitter, href: '#', color: 'hover:bg-[#1DA1F2]', shadow: 'hover:shadow-[#1DA1F2]/40' },
+                { icon: Linkedin, href: '#', color: 'hover:bg-[#0077B5]', shadow: 'hover:shadow-[#0077B5]/40' },
+              ].map((social, i) => (
                 <a 
                   key={i} 
                   href={social.href} 
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={social.label}
                   className={`group relative w-12 h-12 flex items-center justify-center transition-all duration-500`}
                 >
-                  <div className={`absolute inset-0 glass rounded-xl transition-all duration-500 group-hover:scale-110 ${social.color} group-hover:border-transparent group-hover:shadow-[0_0_20px_rgba(147,51,234,0.4)]`}></div>
+                  <div className={`absolute inset-0 glass rounded-xl transition-all duration-500 group-hover:scale-110 ${social.color} group-hover:border-transparent group-hover:shadow-xl ${social.shadow}`}></div>
                   <social.icon size={20} className="relative z-10 text-slate-400 group-hover:text-white transition-colors" />
                 </a>
               ))}
@@ -99,7 +103,7 @@ const Footer: React.FC = () => {
 
           {/* Useful Links */}
           <div className="space-y-8 reveal stagger-1">
-            <h5 className="text-sm font-black uppercase tracking-[0.3em] text-purple-400 border-l-2 border-purple-600 pl-4">Company</h5>
+            <h5 className="text-xs font-black uppercase tracking-[0.4em] text-purple-400 border-l-2 border-purple-600 pl-4">Navigation</h5>
             <ul className="space-y-4">
               {['About', 'Skills', 'Services', 'Portfolio', 'Contact'].map((item) => (
                 <li key={item}>
@@ -108,7 +112,7 @@ const Footer: React.FC = () => {
                     className="text-slate-400 hover:text-purple-400 transition-all flex items-center gap-3 group"
                   >
                     <div className="w-0 h-px bg-purple-500 transition-all duration-300 group-hover:w-6"></div>
-                    <span className="text-lg">{item}</span>
+                    <span className="text-lg font-light">{item}</span>
                   </a>
                 </li>
               ))}
@@ -117,45 +121,61 @@ const Footer: React.FC = () => {
 
           {/* Contact & Availability */}
           <div className="space-y-8 reveal stagger-2">
-            <h5 className="text-sm font-black uppercase tracking-[0.3em] text-purple-400 border-l-2 border-purple-600 pl-4">Availability</h5>
+            <h5 className="text-xs font-black uppercase tracking-[0.4em] text-purple-400 border-l-2 border-purple-600 pl-4">Availability</h5>
             <div className="space-y-6">
-              <div className="flex items-center gap-4 text-slate-300">
-                <Clock className="text-purple-500" size={20} />
+              <div className="flex items-center gap-4 text-slate-300 group">
+                <div className="w-10 h-10 glass rounded-xl flex items-center justify-center group-hover:bg-purple-600/20 transition-colors">
+                  <Clock className="text-purple-500" size={18} />
+                </div>
                 <div>
-                  <p className="text-xs text-slate-500 uppercase tracking-widest">Working Hours</p>
-                  <p className="font-bold">Mon - Sat: 10AM - 10PM</p>
+                  <p className="text-[10px] text-slate-500 uppercase tracking-widest font-black">Working Hours</p>
+                  <p className="font-bold text-sm">Mon - Sat: 10AM - 10PM</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4 text-slate-300">
-                <Globe className="text-indigo-500" size={20} />
+              <div className="flex items-center gap-4 text-slate-300 group">
+                <div className="w-10 h-10 glass rounded-xl flex items-center justify-center group-hover:bg-indigo-600/20 transition-colors">
+                  <Globe className="text-indigo-500" size={18} />
+                </div>
                 <div>
-                  <p className="text-xs text-slate-500 uppercase tracking-widest">Timezone</p>
-                  <p className="font-bold">PKT (UTC +5)</p>
+                  <p className="text-[10px] text-slate-500 uppercase tracking-widest font-black">Timezone</p>
+                  <p className="font-bold text-sm">PKT (UTC +5)</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4 text-slate-300">
-                <Mail className="text-purple-400" size={20} />
-                <a href="mailto:amir.razaoffical@gmail.com" className="font-bold hover:text-purple-400 transition-colors break-all">amir.razaoffical@gmail.com</a>
+              <div className="flex items-center gap-4 text-slate-300 group">
+                <div className="w-10 h-10 glass rounded-xl flex items-center justify-center group-hover:bg-purple-400/20 transition-colors">
+                  <Mail className="text-purple-400" size={18} />
+                </div>
+                <div>
+                  <p className="text-[10px] text-slate-500 uppercase tracking-widest font-black">Email Me</p>
+                  <a href="mailto:amir.razaoffical@gmail.com" className="font-bold text-sm hover:text-purple-400 transition-colors break-all">amir.razaoffical@gmail.com</a>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Tech Stack Footer Card */}
           <div className="space-y-8 reveal stagger-3">
-             <h5 className="text-sm font-black uppercase tracking-[0.3em] text-purple-400 border-l-2 border-purple-600 pl-4">My Toolkit</h5>
+             <h5 className="text-xs font-black uppercase tracking-[0.4em] text-purple-400 border-l-2 border-purple-600 pl-4">Core Toolkit</h5>
              <div className="grid grid-cols-2 gap-3">
-                {['Premiere Pro', 'After Effects', 'DaVinci', 'Audition', 'Photoshop', 'Illustrator'].map((tool) => (
-                  <div key={tool} className="px-4 py-2 glass rounded-lg text-xs font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all text-center">
-                    {tool}
+                {[
+                  { name: 'Premiere Pro', color: 'hover:border-[#00005b]' },
+                  { name: 'After Effects', color: 'hover:border-[#00005b]' },
+                  { name: 'DaVinci', color: 'hover:border-[#ff6600]' },
+                  { name: 'Audition', color: 'hover:border-[#00005b]' },
+                  { name: 'Photoshop', color: 'hover:border-[#31a8ff]' },
+                  { name: 'Illustrator', color: 'hover:border-[#ff9a00]' }
+                ].map((tool) => (
+                  <div key={tool.name} className={`px-3 py-2 glass rounded-xl text-[10px] font-black uppercase tracking-wider text-slate-500 hover:text-white transition-all text-center border border-transparent ${tool.color} hover:bg-white/5`}>
+                    {tool.name}
                   </div>
                 ))}
              </div>
              <button 
               onClick={scrollToTop}
-              className="w-full mt-4 py-4 shimmer-border rounded-xl flex items-center justify-center gap-3 text-white font-black uppercase tracking-widest text-xs hover:scale-105 transition-all shadow-xl active:scale-95"
+              className="w-full mt-4 py-4 shimmer-border rounded-2xl flex items-center justify-center gap-3 text-white font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all shadow-2xl active:scale-95"
             >
               Back to Surface
-              <ArrowUp size={16} />
+              <ArrowUp size={14} />
             </button>
           </div>
         </div>
